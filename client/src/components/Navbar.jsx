@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import ThemePick from './ThemePick'
-
+import  {Link} from 'react-router-dom'
 function Navbar() {
     const [sideMenu, setsideMenu] = useState(false)
  function mobilemenu(){
@@ -27,10 +27,10 @@ function Navbar() {
             </div> 
             
             <div className="flex-1 hidden px-2 mx-2 lg:flex">
-                <span className="text-lg font-bold">
+                    <Link to={"/"} className="text-lg font-bold">
                         daisyUI
-                        
-                    </span>
+                       
+                    </Link>
                     
             </div> 
             <div className=''>
@@ -48,10 +48,10 @@ function Navbar() {
             </div> 
             <ThemePick />
             <div className="flex-none">
-                <div className="avatar">
-                <div className="rounded-full w-10 h-10 m-1">
+                <div className="avatar hover:bg-neutral">
+                <Link to={'/profile'} className="rounded-full w-10 h-10 m-1">
                     <img src="https://avatars.dicebear.com/api/avataaars/hinzwifi.svg" />
-                </div>
+                </Link>
                 </div>
             </div>
             </div>

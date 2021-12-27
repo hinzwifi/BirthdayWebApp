@@ -1,11 +1,14 @@
 import React from 'react'
 import Navbar from './Navbar'
 import {FiPlus} from 'react-icons/fi'
+import ApiTrial from './ApiTrial'
+import { Link } from 'react-router-dom'
+
 function Home() {
     return (
         <>
             <Navbar />
-            <div className='   max-w-lg lg:max-w-3xl   max-h-full mx-auto'>
+            {/* <div className='   max-w-lg lg:max-w-3xl   max-h-full mx-auto'>
             <div class="birthday-people">
                 <div>
                     <div class="avatar">
@@ -105,10 +108,11 @@ function Home() {
                     <p class="text-base-content text-opacity-40">Accounts Agent</p>
                 </div>
             </div>
-            </div>
-            <button className='btn btn-circle btn-secondary  fixed bottom-5  right-5 '>
+            </div> */}
+            <ApiTrial />
+            <Link to="/add" className='btn btn-circle btn-secondary  fixed bottom-5  right-5 '>
                 <FiPlus />
-            </button>
+            </Link>
          </>
     )
 }

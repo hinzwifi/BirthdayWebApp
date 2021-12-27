@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-function Auth() {
+function Signup() {
     return (
         <>
             <div className="flex ...">
@@ -10,7 +10,7 @@ function Auth() {
                 <div className="   flex  justify-center h-screen grow-0 md:w-2/4 w-screen ...">
                     
                     <div className="flex items-center justify-center flex-col ...">
-                    <h2 className="card-title">Click to Login</h2> 
+                    <h2 className="card-title"></h2> 
    
                         <div className="card flex-shrink-0 w-full max-w-sm sm:shadow-2xl   bg-base-100">
                             <form className="card-body">
@@ -27,13 +27,13 @@ function Auth() {
                                 </label> 
                                 <input type="text"  placeholder="password" className="input input-bordered" /> 
                                 <label className="label">
-                                    <a href="#" className="label-text-alt">Forgot password?</a>
+                                    <Link to="/passrecover" href="#" className="label-text-alt">Forgot password?</Link>
                                 </label>
                                 </div> 
                                 <div className="form-control mt-6">
-                                <button type="sumbit" value="" className="btn btn-primary">Login</button>
+                                <button type="sumbit" value="" className="btn btn-primary">Sign up</button>
                                 
-                                <Link to="/signup" type="button" value="" className="my-5 btn btn-secondary" >Signup</Link>
+                                
                                 </div>
                             </form>
                         </div>
@@ -48,4 +48,4 @@ function Auth() {
     )
 }
 
-export default Auth
+export default Signup
