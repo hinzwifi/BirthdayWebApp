@@ -15,7 +15,7 @@ function Navbar() {
     return (
         <>
         
-        <div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content flex justify-between  ">
+        <div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content flex justify-between sticky top-0  z-10 ">
             <div className="flex-none  drawer">
                 <button onClick={mobilemenu} id="my-drawer-3" className=" btn btn-square btn-ghost block  lg:hidden draw-toggle  ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current">           

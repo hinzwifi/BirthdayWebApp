@@ -27,10 +27,13 @@ function ThemePick() {
                 <a className='hover:bg-red-300' data-set-theme="forest" data-act-class="ACTIVECLASS">🌲 Forest</a>
                 </li> 
                 <li>
-                <a className='hover:bg-red-300' data-set-theme="light" data-act-class="ACTIVECLASS">🌅 Light</a>
+                <a className='hover:bg-red-300' data-set-theme="garden" data-act-class="ACTIVECLASS">🌅 Light</a>
                 </li>
                 <li>
                 <a className='hover:bg-red-300' data-set-theme="halloween" data-act-class="ACTIVECLASS">👻 halloween</a>
+                </li>
+                <li>
+                <a className='hover:bg-red-300' data-set-theme="synthwave" data-act-class="ACTIVECLASS">🌊 Synthwave</a>
                 </li>
             </ul>
             </div>
