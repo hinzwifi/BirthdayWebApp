@@ -10,9 +10,9 @@ function Auth() {
                 <div className="   flex  justify-center h-screen grow-0 md:w-2/4 w-screen ...">
                     
                     <div className="flex items-center justify-center flex-col ...">
-                    <h2 class="card-title">Click to Login</h2> 
+                    <h2 className="card-title">Click to Login</h2> 
    
-                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <div className="card flex-shrink-0 w-full max-w-sm sm:shadow-2xl   bg-base-100">
                             <form className="card-body">
                     
                                 <div className="form-control">
