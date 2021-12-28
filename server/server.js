@@ -78,18 +78,34 @@ app.post("/bruh/", async(req,res) =>{
 
 })
 
-app.get("/bruh/:name", (req,res)=>{
-  
-  Births.find({name: req.params.name}).exec(function(err,books){
-    if(err){
-      res.send('error has occured')
-    }
-    else{
-      
-      res.send(books)
-     }
-  })
+app.get("/bruh/:id", async (req,res)=>{
+  try{
+    const abortion = await Births.find({_id: req.params.id})
+    res.json(abortion)
+    
+  }
+  catch(err){
+    res.status(400).json({message:err})
+   }
  
+})
+
+app.put("/bruh/:id", async (req,res) =>{
+
+ try{
+   const update = req.body
+  const user_id = req.params.id
+  if(!req.body){
+   res.send("eat shit")
+  }
+  else{
+  const abortion = await Births.findByIdAndUpdate(user_id , update, {new:true})
+  res.json(abortion)}
+ }
+ catch(err){
+    res.status(400).json({message:err})
+ }
+
 })
 
 
@@ -124,6 +140,7 @@ app.get("/bruh/:name", (req,res)=>{
 // }
 
 const db = require("./config/db.config");
+const e = require("express");
 mongoose.connect(db.url);
 
 

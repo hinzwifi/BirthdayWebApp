@@ -18,9 +18,27 @@ function ApiTrial() {
         }).catch(err => {console.error(err)} )
       }
       const deletePerson = (id)=>{
-        axios.delete(`http://localhost:3003/bruh/${id}`)
-        getPersons()
-      }
+        
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this person!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Poof! The Person has died!", {
+            icon: "success",
+          });
+          axios.delete(`http://localhost:3003/bruh/${id}`)
+          getPersons()
+        } else {
+          swal("Your imaginary file is safe!")
+          getPersons()
+        }
+      });
+    }
     return (
         <>
             <div className='   max-w-lg lg:max-w-3xl   max-h-full mx-auto'>
@@ -47,7 +65,7 @@ function ApiTrial() {
                     </div>
                   <div>
                   
-                  <Link to={`/add/${countr._id}`} className="btn btn-accent btn-active  mx-1 "  aria-pressed="true"  >
+                  <Link to={`/edit/${countr._id}`} className="btn btn-accent btn-active  mx-1 "  aria-pressed="true"  >
                       <BsPencilFill />
                   </Link>
                   <button onClick={() => deletePerson(countr._id)} className="btn btn-error btn-active "  type="submit" >

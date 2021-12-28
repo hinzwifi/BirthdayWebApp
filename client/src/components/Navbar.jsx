@@ -28,7 +28,7 @@ function Navbar() {
             
             <div className="flex-1 hidden px-2 mx-2 lg:flex">
                     <Link to={"/"} className="text-lg font-bold">
-                        daisyUI
+                       Bunyag
                        
                     </Link>
                     
