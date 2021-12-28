@@ -1,15 +1,26 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import {BsPencilFill , BsTrashFill} from 'react-icons/bs'
+
 function ApiTrial() {
-    
+    const [showModal, setshowModal] = useState("")
     const [countries, setcountries] = useState([])
     const url = 'http://localhost:3003/bruh'
     useEffect(() => {
+        getPersons()
+       
+      }, [])
+      function getPersons (){
         axios.get(url).then(response => {
           setcountries(response.data)
           
         }).catch(err => {console.error(err)} )
-      }, [])
+      }
+      const deletePerson = (id)=>{
+        axios.delete(`http://localhost:3003/bruh/${id}`)
+        getPersons()
+      }
     return (
         <>
             <div className='   max-w-lg lg:max-w-3xl   max-h-full mx-auto'>
@@ -17,17 +28,34 @@ function ApiTrial() {
                countries.length ? countries.map( countr =>
                 //  <li key={countr._id}> {countr.name} </li> 
                 <>
-                 <div class="birthday-people" key={countr._id}>
-                <div>
-                    <div class="avatar">
-                    <div class="rounded-full w-14 h-14 shadow"><img src={`https://avatars.dicebear.com/api/avataaars/${countr.name}.svg`} /></div>
+                
+                <div   class="birthday-people flex   justify-between " key={countr._id}>
+               
+            
+                
+                
+                  <div for="my-modal-2" className='flex modal-button '>
+                   <div>
+                     <div class="avatar">
+                       <div class="rounded-full w-14 h-14 shadow"><img src={`https://avatars.dicebear.com/api/avataaars/${countr.name}.svg`} /></div>
+                          </div>
                     </div>
+                    <div>
+                          <h2 class="card-title">{countr.name}</h2>
+                          <p class="text-base-content text-opacity-40">{countr.birthdate}</p>
+                    </div>
+                    </div>
+                  <div>
+                  
+                  <Link to={`/add/${countr._id}`} className="btn btn-accent btn-active  mx-1 "  aria-pressed="true"  >
+                      <BsPencilFill />
+                  </Link>
+                  <button onClick={() => deletePerson(countr._id)} className="btn btn-error btn-active "  type="submit" >
+                      <BsTrashFill/>
+                  </button>
+                  </div>
                 </div>
-                <div>
-                    <h2 class="card-title">{countr.name}</h2>
-                    <p class="text-base-content text-opacity-40">{countr.birthdate}</p>
-                </div>
-                </div>
+               
                 </>
                  ):
                  <>

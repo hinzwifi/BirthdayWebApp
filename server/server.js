@@ -29,7 +29,35 @@ app.get("/bruh/", (req,res)=>{
    })
   
 })
+// app.delete("/bruh/:name", async(req,res) =>{
+ 
 
+//  try{
+//      const abortion = await Births.deleteMany({name: req.params.name});
+//      res.json(abortion)
+     
+//  }
+//  catch(err){
+//     res.status(400).json({message:err})
+//  }
+
+// })
+
+
+app.delete("/bruh/:id" , async(req,res) =>{
+  
+ try{
+  const abortion = await Births.deleteMany({_id: req.params.id });
+  res.json(abortion)
+  
+}
+catch(err){
+ res.status(400).json({message:err})
+}
+ 
+ 
+})
+ 
 
 app.post("/bruh/", async(req,res) =>{
   const newBDAY = new Births({
