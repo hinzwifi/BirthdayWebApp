@@ -5,10 +5,10 @@ import Navbar from './Navbar';
 import axios from 'axios';
 import swal from 'sweetalert'
 import { useParams } from 'react-router-dom';
-
+import dayjs from 'dayjs'
 function EditBirthday() {
     const { id } = useParams()
-    
+    const [birthMax, setbirthMax] = useState("")
     const [name, setName] = useState("");
     const [birthDate, setbirthDate] = useState("")
     const [placeName, setplaceName] = useState("")
@@ -28,6 +28,7 @@ function EditBirthday() {
       }
 
       useEffect(() => {
+        setbirthMax(dayjs().format('YYYY-MM-DD'))
         axios.get(`http://localhost:3003/bruh/${id}`).then(response => {
           const responseYoink = response.data[0]
           
@@ -63,7 +64,7 @@ function EditBirthday() {
             </label> 
         <input required     
         className="input input-bordered my-3" 
-        type="date" name="birthdate" min="1969-01-01" max="2018-12-31"
+        type="date" name="birthdate" min="1969-01-01" max={birthMax}
           value={birthDate || placeBirth} 
           onChange={(e) => setbirthDate(e.target.value)}
         />
