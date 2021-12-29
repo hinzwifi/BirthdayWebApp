@@ -6,7 +6,7 @@ import { searchFunction } from './searchFunction'
 
 function ApiTrial() {
     const [showModal, setshowModal] = useState("")
-    const [countries, setcountries] = useState([])
+    const [celebrants, setCelebrants] = useState([])
     const url = 'http://localhost:3003/bruh'
     useEffect(() => {
         getPersons()
@@ -14,7 +14,7 @@ function ApiTrial() {
       }, [])
       function getPersons (){
         axios.get(url).then(response => {
-          setcountries(response.data)
+          setCelebrants(response.data)
           
         }).catch(err => {console.error(err)} )
       }
@@ -46,17 +46,17 @@ function ApiTrial() {
         <>
             <div id="myTable" className='   max-w-lg lg:max-w-3xl   max-h-full mx-auto'>
                {
-               countries.length ? countries.filter((countr)=>{
+               celebrants.length ? celebrants.filter((celebrant)=>{
                 if(bruh == null)
-                    return countr
-                else if(countr.name.toLowerCase().includes(bruh.toLowerCase())) {
-                    return countr
+                    return celebrant
+                else if(celebrant.name.toLowerCase().includes(bruh.toLowerCase())) {
+                    return celebrant
                 }
-              }).map( countr =>
-                //  <li key={countr._id}> {countr.name} </li> 
+              }).map( celebrant =>
+                //  <li key={celebrant._id}> {celebrant.name} </li> 
                 <>
                 
-                <div id="birthdaypeople"  class="birthday-people flex   justify-between " key={countr._id}>
+                <div id="birthdaypeople"  class="birthday-people flex   justify-between " key={celebrant._id}>
                
             
                 
@@ -64,20 +64,20 @@ function ApiTrial() {
                   <div for="my-modal-2" className='flex modal-button '>
                    <div>
                      <div class="avatar">
-                       <div class="rounded-full w-14 h-14 shadow"><img src={`https://avatars.dicebear.com/api/avataaars/${countr.name}.svg`} /></div>
+                       <div class="rounded-full w-14 h-14 shadow"><img src={`https://avatars.dicebear.com/api/avataaars/${celebrant.name}.svg`} /></div>
                           </div>
                     </div>
                     <div>
-                          <h2 id="personName" class="something card-title">{countr.name}</h2>
-                          <p class="something text-base-content text-opacity-40">{countr.birthdate}</p>
+                          <h2 id="personName" class="something card-title">{celebrant.name}</h2>
+                          <p class="something text-base-content text-opacity-40">{celebrant.birthdate}</p>
                     </div>
                     </div>
                   <div>
                   
-                  <Link to={`/edit/${countr._id}`} className="btn btn-accent btn-active  mx-1 "  aria-pressed="true"  >
+                  <Link to={`/edit/${celebrant._id}`} className="btn btn-accent btn-active  mx-1 "  aria-pressed="true"  >
                       <BsPencilFill />
                   </Link>
-                  <button onClick={() => deletePerson(countr._id)} className="btn btn-error btn-active "  type="submit" >
+                  <button onClick={() => deletePerson(celebrant._id)} className="btn btn-error btn-active "  type="submit" >
                       <BsTrashFill/>
                   </button>
                   </div>

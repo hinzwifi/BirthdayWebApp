@@ -65,7 +65,7 @@ function EditBirthday() {
         <input required     
         className="input input-bordered my-3" 
         type="date" name="birthdate" min="1969-01-01" max={birthMax}
-          value={birthDate || placeBirth} 
+          value={birthDate || placeBirth} placeholder='hi'
           onChange={(e) => setbirthDate(e.target.value)}
         />
         </div>
