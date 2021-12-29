@@ -11,8 +11,8 @@ function EditBirthday() {
     
     const [name, setName] = useState("");
     const [birthDate, setbirthDate] = useState("")
-    
-    
+    const [placeName, setplaceName] = useState("")
+    const [placeBirth, setplaceBirth] = useState("")
       const handleSubmit = (event) => {
         event.preventDefault();
         
@@ -21,11 +21,21 @@ function EditBirthday() {
       }).then(response => {
          
         swal("Changed It!", "You've edited your friend!", "success");
-       
+        
           
           
         }).catch(err => {console.error(err)} )
       }
+
+      useEffect(() => {
+        axios.get(`http://localhost:3003/bruh/${id}`).then(response => {
+          const responseYoink = response.data[0]
+          
+          setplaceName(responseYoink.name)
+          setplaceBirth(responseYoink.birthdate)
+        }).catch(err => {console.error(err)} )
+      
+      }, [])
     return (
         <>
      <Navbar />
@@ -38,6 +48,7 @@ function EditBirthday() {
                 <span class="label-text">Full Name</span>
             </label> 
       <input required
+      placeholder={placeName}
         autocomplete="off"
         className="input input-bordered my-3" 
         type="text" 
@@ -52,8 +63,8 @@ function EditBirthday() {
             </label> 
         <input required     
         className="input input-bordered my-3" 
-        type="date" name="birthdate"min="1969-01-01" max="2018-12-31"
-          value={birthDate || ""} 
+        type="date" name="birthdate" min="1969-01-01" max="2018-12-31"
+          value={birthDate || placeBirth} 
           onChange={(e) => setbirthDate(e.target.value)}
         />
         </div>
