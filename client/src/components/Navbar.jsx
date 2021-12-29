@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import ThemePick from './ThemePick'
 import  {Link} from 'react-router-dom'
+import { searchFunction } from './searchFunction'
 function Navbar() {
     const [sideMenu, setsideMenu] = useState(false)
  function mobilemenu(){
@@ -36,7 +37,7 @@ function Navbar() {
             <div className=''>
             <div className="flex-1 hidden lg:flex">
                 <div className="form-control">
-                <input type="text" placeholder="Search" className="input input-ghost" />
+                <input onKeyUp={searchFunction} id="myInput" type="text" placeholder="Search" className="input input-ghost" />
                 </div>
             </div> 
             <div className="flex-none">

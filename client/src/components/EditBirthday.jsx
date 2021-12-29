@@ -4,16 +4,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Navbar from './Navbar';
 import axios from 'axios';
 import swal from 'sweetalert'
+import { useParams } from 'react-router-dom';
 
 function EditBirthday() {
-
-    async function getUser(){
-        axios.get(`http://localhost:3003/bruh/`).then(response => {
-            setName(response.data.name)
-            setbirthDate(response.data.birthdate)
-          }).catch(err => {console.error(err)} )
-    }
-    getUser()
+    const { id } = useParams()
+    
     const [name, setName] = useState("");
     const [birthDate, setbirthDate] = useState("")
     
@@ -21,12 +16,12 @@ function EditBirthday() {
       const handleSubmit = (event) => {
         event.preventDefault();
         
-        axios.put('http://localhost:3003/bruh', {name: name,
+        axios.put(`http://localhost:3003/bruh/${id}`, {name: name,
       birthdate:birthDate
       }).then(response => {
          
-        swal("Added It!", "You've added a friend!", "success");
-         
+        swal("Changed It!", "You've edited your friend!", "success");
+       
           
           
         }).catch(err => {console.error(err)} )

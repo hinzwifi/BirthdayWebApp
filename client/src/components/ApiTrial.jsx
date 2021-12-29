@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import {BsPencilFill , BsTrashFill} from 'react-icons/bs'
+import { searchFunction } from './searchFunction'
 
 function ApiTrial() {
     const [showModal, setshowModal] = useState("")
@@ -39,15 +40,23 @@ function ApiTrial() {
         }
       });
     }
+    const bruh =""  
+    
     return (
         <>
-            <div className='   max-w-lg lg:max-w-3xl   max-h-full mx-auto'>
+            <div id="myTable" className='   max-w-lg lg:max-w-3xl   max-h-full mx-auto'>
                {
-               countries.length ? countries.map( countr =>
+               countries.length ? countries.filter((countr)=>{
+                if(bruh == null)
+                    return countr
+                else if(countr.name.toLowerCase().includes(bruh.toLowerCase())) {
+                    return countr
+                }
+              }).map( countr =>
                 //  <li key={countr._id}> {countr.name} </li> 
                 <>
                 
-                <div   class="birthday-people flex   justify-between " key={countr._id}>
+                <div id="birthdaypeople"  class="birthday-people flex   justify-between " key={countr._id}>
                
             
                 
@@ -59,8 +68,8 @@ function ApiTrial() {
                           </div>
                     </div>
                     <div>
-                          <h2 class="card-title">{countr.name}</h2>
-                          <p class="text-base-content text-opacity-40">{countr.birthdate}</p>
+                          <h2 id="personName" class="something card-title">{countr.name}</h2>
+                          <p class="something text-base-content text-opacity-40">{countr.birthdate}</p>
                     </div>
                     </div>
                   <div>
@@ -75,7 +84,9 @@ function ApiTrial() {
                 </div>
                
                 </>
-                 ):
+                 )
+                 
+                 :
                  <>
                  <div class="hero rounded-3xl flex justify-center items-center  my-auto    bg-base-200">
   <div class="text-center hero-content">
