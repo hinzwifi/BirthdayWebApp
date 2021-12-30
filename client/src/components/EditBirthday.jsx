@@ -32,8 +32,8 @@ function EditBirthday() {
         axios.get(`http://localhost:3003/bruh/${id}`).then(response => {
           const responseYoink = response.data[0]
           
-          setplaceName(responseYoink.name)
-          setplaceBirth(responseYoink.birthdate)
+          setName(responseYoink.name) 
+          setbirthDate(responseYoink.birthdate)
         }).catch(err => {console.error(err)} )
       
       }, [])
@@ -54,7 +54,7 @@ function EditBirthday() {
         className="input input-bordered my-3" 
         type="text" 
         name="name" 
-        value={name || ""} 
+        value={name || placeName} 
         onChange={(e) => setName(e.target.value)}
       />
       </div>
