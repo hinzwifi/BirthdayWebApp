@@ -2,7 +2,7 @@
   "name": "birthdaywebapp",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -24,5 +24,6 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
     "vite": "^2.7.2"
-  }
+  },
+  "proxy": "http://localhost:3003/"
 }

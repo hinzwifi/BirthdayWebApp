@@ -5,7 +5,7 @@ const port = 3003
 const app = express();
 const mongoose = require('mongoose')
 const corsOptions = {
-    origin: "http://localhost:3000"
+    origin: "http://192.168.254.102:3002/"
   };
 const Births = require('../server/models/tutorial.model')(mongoose)
 app.use(cors(corsOptions));
